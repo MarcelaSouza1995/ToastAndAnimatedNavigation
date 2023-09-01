@@ -3,14 +3,14 @@ const NextScreen = ({navigation}) => {
 
   const scaleValue = new Animated.Value(0.8);
   
+  Animated.timing(scaleValue, {
+    toValue: 1,
+    duration: 1000,
+    useNativeDriver: true,
+  }).start()
+
   const handlePress = () => {
-    Animated.timing(scaleValue, {
-      toValue: 1,
-      duration: 400,
-      useNativeDriver: true,
-    }).start(() => {
       navigation.navigate('Home');
-    });
   };
 
   return (
