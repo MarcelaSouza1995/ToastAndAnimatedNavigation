@@ -1,20 +1,16 @@
 import { StyleSheet, View, Animated } from 'react-native';
-import { useState } from "react";
-
 const NextScreen = ({navigation}) => {
 
-  const [border, setBorder] = useState(0)
   const scaleValue = new Animated.Value(0.8);
   
   const handlePress = () => {
     Animated.timing(scaleValue, {
       toValue: 1,
-      duration: 300,
+      duration: 400,
       useNativeDriver: true,
     }).start(() => {
       navigation.navigate('Home');
     });
-    setBorder(32)
   };
 
   return (
@@ -24,8 +20,8 @@ const NextScreen = ({navigation}) => {
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      borderRadius: 30,
-    }} onStartShouldSetResponder={handlePress }>
+      borderRadius: 32,
+    }} onStartShouldSetResponder={handlePress}>
     </Animated.View>
   );
 }

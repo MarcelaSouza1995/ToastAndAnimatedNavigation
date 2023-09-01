@@ -1,25 +1,21 @@
 import { StyleSheet, Text, View,Button, Image, Animated} from 'react-native';
 import Toast from 'react-native-toast-message';
-import { useState } from "react";
-
-//Configuracao toast
-const toastConfig = {
-  typeCustom: ({ text2 }) => (
-    <View style={ styles.viewToast }>
-      <Image
-        style={styles.img}
-        source={require('../lightbulb.png')}
-      />
-      <Text style={styles.text}>{text2}</Text>
-    </View>
-  )
-};
 
 export default FirstPage = ({ navigation }) => {
-
-  const [border, setBorder] = useState(0)
   const scaleValue = new Animated.Value(1);
   
+  const toastConfig = {
+    typeCustom: ({ text2 }) => (
+      <View style={ styles.viewToast }>
+        <Image
+          style={styles.img}
+          source={require('../lightbulb.png')}
+        />
+        <Text style={styles.text}>{text2}</Text>
+      </View>
+    )
+  };
+
   const showToast = () => {
     Toast.show({
       type: 'typeCustom',
@@ -31,12 +27,11 @@ export default FirstPage = ({ navigation }) => {
   const handlePress = () => {
     Animated.timing(scaleValue, {
       toValue: 0.8,
-      duration: 300,
+      duration: 400,
       useNativeDriver: true,
     }).start(() => {
       navigation.navigate('Next');
     });
-    setBorder(32)
   };
 
   return(
@@ -46,7 +41,7 @@ export default FirstPage = ({ navigation }) => {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius:border
+        borderRadius:32
       }
       
       } onStartShouldSetResponder={handlePress }>
